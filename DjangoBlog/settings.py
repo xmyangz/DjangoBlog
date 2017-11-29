@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'pagedown',
     'haystack',
     'blog',
-    'accounts',
     'comments',
     'oauth',
     'servermanager',
-    'compressor'
+    'compressor',
+    'accounts',
 ]
 
 MIDDLEWARE_CLASSES = [
