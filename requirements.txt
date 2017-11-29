@@ -17,7 +17,7 @@ olefile==0.44
 packaging==16.8
 Pillow==4.3.0
 Pygments==2.2.0
-PyMySQL==0.7.11
+#PyMySQL==0.7.11
 pyparsing==2.2.0
 python-memcached==1.58
 python-slugify==1.2.4
@@ -32,3 +32,11 @@ urllib3==1.22
 webencodings==0.5.1
 WeRoBot==1.1.1
 Whoosh==2.7.4
+
+certifi==2017.7.27.1
+dj-database-url==0.4.2
+dj-static==0.0.6
+django-bootstrap3==9.1.0
+gunicorn==19.7.1
+static3==0.7.0
+psycopg2>=2.6.1

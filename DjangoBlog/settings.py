@@ -27,7 +27,6 @@ DEBUG = True
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
 ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['www.lylinux.net', '127.0.0.1', 'example.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    # 第三方应用程序 
+    'bootstrap3',
     'pagedown',
     'haystack',
     'blog',
@@ -322,6 +323,14 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.JSMinFilter'
 ]
 
+# Heroku设置
+
+# 让request.is_secure()承认X-Forwarded-Proto头
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# 支持所有的主机头（host header)
+ALLOWED_HOSTS = ['*']
+
 if os.getcwd() == '/app':
     import dj_database_url
     DATABASES = { 
@@ -329,6 +338,6 @@ if os.getcwd() == '/app':
     }
 
     # 只允许Heroku托管这个项目
-    ALLOWED_HOSTS = ['yyx.herokuapp.com']
+    ALLOWED_HOSTS = ['yangz.herokuapp.com']
 
     DEBUG = False
