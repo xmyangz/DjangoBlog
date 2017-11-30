@@ -42,12 +42,12 @@ INSTALLED_APPS = [
     'bootstrap3',
     'pagedown',
     'haystack',
+    'accounts',
     'blog',
     'comments',
     'oauth',
     'servermanager',
     'compressor',
-    'accounts',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -92,14 +92,20 @@ WSGI_APPLICATION = 'DjangoBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         #'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'djangoblog',
         #'USER': os.environ.get('DJANGO_MYSQL_USER'),
         #'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD'),
         #'HOST': os.environ.get('DJANGO_MYSQL_HOST'),
         #'PORT': 3306,
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangoblog',
+        'USER': 'postgres',
+        'PASSWORD': 'xm5194892',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
