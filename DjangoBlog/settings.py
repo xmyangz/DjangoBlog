@@ -103,7 +103,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'djangoblog',
         'USER': 'postgres',
-        'PASSWORD': 'xm5194892',
+        'PASSWORD': os.environ.get('POSTGRESQL_PASSWORD'),
         'HOST': 'localhost',
         'PORT': 5432,
     }
@@ -170,10 +170,10 @@ TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 DATE_TIME_FORMAT = '%Y-%m-%d'
 
 SITE_NAME = '羊村笔记本'
-SITE_URL = 'https://yyx.herokuapp.com'
+SITE_URL = 'https://yangz.herokuapp.com'
 SITE_DESCRIPTION = '知识是人类进步的阶梯。'
 SITE_SEO_DESCRIPTION = '本站主要用来分享和记录学习经验、教程，以及一些随笔。欢迎大家访问！'
-SITE_SEO_KEYWORDS = 'linux,windows,mac,mysql,mssql,web,delphi,prolog,python,django'
+SITE_SEO_KEYWORDS = 'linux,windows,mac,mysql,mssql,postgresql,web,delphi,fmx,prolog,python,django,爬虫,大数据,人工智能'
 ARTICLE_SUB_LENGTH = 300
 SHOW_GOOGLE_ADSENSE = False
 # bootstrap颜色样式
@@ -215,27 +215,27 @@ OAHUTH = {
     'sina': {
         'appkey': os.environ.get('SINA_APP_KEY'),
         'appsecret': os.environ.get('SINA_APP_SECRET'),
-        'callbackurl': 'http://www.lylinux.net/oauth/authorize?type=weibo'
+        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=weibo'
     },
     'google': {
         'appkey': os.environ.get('GOOGLE_APP_KEY'),
         'appsecret': os.environ.get('GOOGLE_APP_SECRET'),
-        'callbackurl': 'http://www.lylinux.net/oauth/authorize?type=google'
+        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=google'
     },
     'github': {
         'appkey': os.environ.get('GITHUB_APP_KEY'),
         'appsecret': os.environ.get('GITHUB_APP_SECRET'),
-        'callbackurl': 'http://www.lylinux.net/oauth/authorize?type=github'
+        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=github'
     },
     'facebook': {
         'appkey': os.environ.get('FACEBOOK_APP_KEY'),
         'appsecret': os.environ.get('FACEBOOK_APP_SECRET'),
-        'callbackurl': 'http://www.lylinux.net/oauth/authorize?type=facebook'
+        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=facebook'
     }
 }
 
 SITE_ID = 1
-BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://www.lylinux.net&token=1uAOGrMsUm5syDGn&type=original"
+BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://yangz.herokuapp.com&token=1uAOGrMsUm5syDGn&type=original"
 
 # Emial:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -243,16 +243,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = True
 
-EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'xmyangz@qq.com'
-EMAIL_HOST_PASSWORD = 'DJANGO_EMAIL_PASSWORD'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_USER = 'yyxfans@163.com'
+EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PASSWORD')
+DEFAULT_FROM_EMAIL = 'xmyangz@qq.com'
+SERVER_EMAIL = 'xmyangz@qq.com'
 # 设置debug=false 未处理异常邮件通知
 ADMINS = [('xmyangz', 'xmyangz@qq.com')]
 # 微信管理员密码(两次md5获得)
-WXADMIN = '995F03AC401D6CABABAEF756FC4D43C7'
+WXADMIN = 'a0455106316af45a76f2cf037522780d'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
