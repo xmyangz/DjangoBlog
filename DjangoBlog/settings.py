@@ -337,7 +337,8 @@ if os.getcwd() == '/app': # Heroku设置
         'default': dj_database_url.config(default='postgres://localhost')
         }
     # 只允许Heroku托管这个项目
-    ALLOWED_HOSTS = ['yangz.herokuapp.com']
+    #ALLOWED_HOSTS = ['yangz.herokuapp.com']
+    ALLOWED_HOSTS = ['*']
     SITE_URL = 'https://yangz.herokuapp.com'
     DEBUG = False
 elif sys.platform == 'linux': #京东云服务器
