@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    #'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',
@@ -208,32 +208,6 @@ CACHE_MIDDLEWARE_ALIAS = 'default'
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = 'default'
 
-OAHUTH = {
-    'sina': {
-        'appkey': os.environ.get('SINA_APP_KEY'),
-        'appsecret': os.environ.get('SINA_APP_SECRET'),
-        'callbackurl': '/oauth/authorize?type=weibo'
-    },
-    'google': {
-        'appkey': os.environ.get('GOOGLE_APP_KEY'),
-        'appsecret': os.environ.get('GOOGLE_APP_SECRET'),
-        'callbackurl': '/oauth/authorize?type=google'
-    },
-    'github': {
-        'appkey': os.environ.get('GITHUB_APP_KEY'),
-        'appsecret': os.environ.get('GITHUB_APP_SECRET'),
-        'callbackurl': '/oauth/authorize?type=github'
-    },
-    'facebook': {
-        'appkey': os.environ.get('FACEBOOK_APP_KEY'),
-        'appsecret': os.environ.get('FACEBOOK_APP_SECRET'),
-        'callbackurl': '/oauth/authorize?type=facebook'
-    }
-}
-
-SITE_ID = 1
-BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://yangz.herokuapp.com&token=1uAOGrMsUm5syDGn&type=original"
-
 # Emial:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -348,4 +322,32 @@ elif sys.platform == 'linux': #京东云服务器
     DEBUG = False
 elif sys.platform == 'darwin': #mac本机
     ALLOWED_HOSTS = []
-    DEBUG = True    
+    DEBUG = True
+    SITE_URL = 'http://localhost'    
+
+
+OAHUTH = {
+    'sina': {
+        'appkey': os.environ.get('SINA_APP_KEY'),
+        'appsecret': os.environ.get('SINA_APP_SECRET'),
+        'callbackurl': SITE_URL+'/oauth/authorize?type=weibo'
+    },
+    'google': {
+        'appkey': os.environ.get('GOOGLE_APP_KEY'),
+        'appsecret': os.environ.get('GOOGLE_APP_SECRET'),
+        'callbackurl': SITE_URL+'/oauth/authorize?type=google'
+    },
+    'github': {
+        'appkey': os.environ.get('GITHUB_APP_KEY'),
+        'appsecret': os.environ.get('GITHUB_APP_SECRET'),
+        'callbackurl': SITE_URL+'/oauth/authorize?type=github'
+    },
+    'facebook': {
+        'appkey': os.environ.get('FACEBOOK_APP_KEY'),
+        'appsecret': os.environ.get('FACEBOOK_APP_SECRET'),
+        'callbackurl': SITE_URL+'/oauth/authorize?type=facebook'
+    }
+}
+
+SITE_ID = 1
+BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://yangz.herokuapp.com&token=1uAOGrMsUm5syDGn&type=original"
