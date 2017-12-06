@@ -336,6 +336,7 @@ if os.getcwd() == '/app': # Heroku设置
     DATABASES = { 
         'default': dj_database_url.config(default='postgres://localhost')
         }
+        
     # 只允许Heroku托管这个项目
     ALLOWED_HOSTS = ['yangz.herokuapp.com']
     SITE_URL = 'https://yangz.herokuapp.com'
