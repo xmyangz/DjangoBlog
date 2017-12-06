@@ -23,10 +23,8 @@ SECRET_KEY = 'rc+&d5((1!hpx#o6b@8@^)s!i(9=y**nftr9kw8p1l1_kop^#5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = True
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
-ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -170,7 +168,6 @@ TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 DATE_TIME_FORMAT = '%Y-%m-%d'
 
 SITE_NAME = '羊村笔记本'
-SITE_URL = 'https://yangz.herokuapp.com'
 SITE_DESCRIPTION = '知识是人类进步的阶梯。'
 SITE_SEO_DESCRIPTION = '本站主要用来分享和记录学习经验、教程，以及一些随笔。欢迎大家访问！'
 SITE_SEO_KEYWORDS = 'linux,windows,mac,mysql,mssql,postgresql,web,delphi,fmx,prolog,python,django,爬虫,大数据,人工智能'
@@ -215,22 +212,22 @@ OAHUTH = {
     'sina': {
         'appkey': os.environ.get('SINA_APP_KEY'),
         'appsecret': os.environ.get('SINA_APP_SECRET'),
-        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=weibo'
+        'callbackurl': '/oauth/authorize?type=weibo'
     },
     'google': {
         'appkey': os.environ.get('GOOGLE_APP_KEY'),
         'appsecret': os.environ.get('GOOGLE_APP_SECRET'),
-        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=google'
+        'callbackurl': '/oauth/authorize?type=google'
     },
     'github': {
         'appkey': os.environ.get('GITHUB_APP_KEY'),
         'appsecret': os.environ.get('GITHUB_APP_SECRET'),
-        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=github'
+        'callbackurl': '/oauth/authorize?type=github'
     },
     'facebook': {
         'appkey': os.environ.get('FACEBOOK_APP_KEY'),
         'appsecret': os.environ.get('FACEBOOK_APP_SECRET'),
-        'callbackurl': 'https://yangz.herokuapp.com/oauth/authorize?type=facebook'
+        'callbackurl': '/oauth/authorize?type=facebook'
     }
 }
 
@@ -334,16 +331,20 @@ COMPRESS_JS_FILTERS = [
 # 让request.is_secure()承认X-Forwarded-Proto头
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# 支持所有的主机头（host header)
-ALLOWED_HOSTS = ['*']
-
-if os.getcwd() == '/app':
+if os.getcwd() == '/app': # Heroku设置
     import dj_database_url
     DATABASES = { 
         'default': dj_database_url.config(default='postgres://localhost')
-    }
-
+        }
     # 只允许Heroku托管这个项目
     ALLOWED_HOSTS = ['yangz.herokuapp.com']
-
+    SITE_URL = 'https://yangz.herokuapp.com'
     DEBUG = False
+elif sys.platform == 'linux': #京东云服务器
+    #ALLOWED_HOSTS = ['blog.easysoft.club']
+    ALLOWED_HOSTS = ['*']
+    SITE_URL = 'http://116.196.102.151' #'https://blog.easysoft.club'
+    DEBUG = False
+elif sys.platform == 'darwin': #mac本机
+    ALLOWED_HOSTS = []
+    DEBUG = True    
