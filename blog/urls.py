@@ -48,5 +48,7 @@ urlpatterns = [
 
     url(r'^upload', views.fileupload, name='upload'),
     url(r'^refresh', views.refresh_memcache, name='refresh'),
+    url(r'^baidu_verify_9LhJJcbw0s\.html$', views.baidu_verify, name='baidu_verify'),
+          
     #url(r'^favicon.ico$',RedirectView.as_view(url=r'static/favicon.ico')),
 ]

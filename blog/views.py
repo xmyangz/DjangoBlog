@@ -270,3 +270,6 @@ def server_error_view(request):
 def permission_denied_view(request):
     return render(request, 'blog/error_page.html',
                   {'message': '哎呀，您没有权限访问此页面，请点击首页看看别的？', 'statuscode': '403'})
+
+def baidu_verify(request):
+    return HttpResponse("9LhJJcbw0s")

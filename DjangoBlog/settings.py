@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     # 第三方应用程序 
+    'blog',
     'bootstrap3',
     'pagedown',
     'haystack',
     'accounts',
-    'blog',
     'comments',
     'oauth',
     'servermanager',
