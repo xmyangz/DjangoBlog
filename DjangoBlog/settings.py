@@ -350,4 +350,4 @@ OAHUTH = {
 }
 
 SITE_ID = 1
-BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://yangz.herokuapp.com&token=1uAOGrMsUm5syDGn&type=original"
+BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://yangz.herokuapp.com&token=bda8aKdHp58MYeOk&type=original"
