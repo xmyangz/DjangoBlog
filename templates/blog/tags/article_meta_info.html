@@ -1,6 +1,6 @@
 {% load blog_tags %}
 <footer class="entry-meta">
-    本条目发布于<a href="{{ article.get_absolute_url }}" title="{% datetimeformat article.created_time %}"
+    本条目发布于<a href="{{ article.get_absolute_url }}" title="{{ article.title }}"
              itemprop="datePublished" content="{% datetimeformat article.created_time %}"
              rel="bookmark">
 
