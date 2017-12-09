@@ -313,7 +313,7 @@ if os.getcwd() == '/app': # Heroku设置
 
     # 只允许Heroku托管这个项目
     #ALLOWED_HOSTS = ['yangz.herokuapp.com']
-    ALLOWED_HOSTS = ['blog.easysoft.club']
+    ALLOWED_HOSTS = ['blog.easysoft.club', 'yangz.herokuapp.com']
     SITE_URL = 'http://blog.easysoft.club'
     DEBUG = False
 elif sys.platform == 'linux': #京东云服务器
@@ -351,4 +351,4 @@ OAHUTH = {
 }
 
 SITE_ID = 1
-BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=https://yangz.herokuapp.com&token=bda8aKdHp58MYeOk&type=original"
+BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=http://blog.easysoft.club&token=bda8aKdHp58MYeOk&type=original"
