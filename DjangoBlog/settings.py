@@ -312,8 +312,9 @@ if os.getcwd() == '/app': # Heroku设置
         }
 
     # 只允许Heroku托管这个项目
-    ALLOWED_HOSTS = ['yangz.herokuapp.com']
-    SITE_URL = 'https://yangz.herokuapp.com'
+    #ALLOWED_HOSTS = ['yangz.herokuapp.com']
+    ALLOWED_HOSTS = ['blog.easysoft.club']
+    SITE_URL = 'https://blog.easysoft.club'
     DEBUG = False
 elif sys.platform == 'linux': #京东云服务器
     #ALLOWED_HOSTS = ['blog.easysoft.club']
