@@ -21,7 +21,6 @@ from DjangoBlog.feeds import DjangoBlogFeed
 from django.views.decorators.cache import cache_page
 from django.conf import settings
 from django.conf.urls.static import static
-#from django.views.static import serve
 
 sitemaps = {
 
@@ -47,4 +46,5 @@ urlpatterns = [
                   url(r'^feed/$', DjangoBlogFeed()),
                   url(r'^search', include('haystack.urls'), name='search'),
                   url(r'', include('servermanager.urls', namespace='servermanager', app_name='servermanagers')),
+
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

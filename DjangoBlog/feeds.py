@@ -48,7 +48,7 @@ class DjangoBlogFeed(Feed):
 
     def feed_copyright(self):
         # print(Site.objects.get_current().name)
-        return "Copyright© 2017~2099  " + settings.SITE_NAME
+        return "Copyright© 2017  " + settings.SITE_NAME
 
     def item_link(self, item):
         return item.get_absolute_url()

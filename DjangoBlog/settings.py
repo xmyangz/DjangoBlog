@@ -19,11 +19,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rc+&d5((1!hpx#o6b@8@^)s!i(9=y**nftr9kw8p1l1_kop^#5'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
+DEBUG = False
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
+
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -37,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     # 第三方应用程序 
-    'blog',
     'bootstrap3',
+
     'pagedown',
     'haystack',
+    'blog',
     'accounts',
     'comments',
     'oauth',
@@ -171,6 +175,7 @@ SITE_NAME = '羊村笔记本'
 SITE_DESCRIPTION = '知识是人类进步的阶梯。'
 SITE_SEO_DESCRIPTION = '本站主要用来分享和记录学习经验、教程，以及一些随笔。欢迎大家访问！'
 SITE_SEO_KEYWORDS = 'linux,windows,mac,mysql,mssql,postgresql,web,delphi,fmx,prolog,python,django,爬虫,大数据,人工智能'
+
 ARTICLE_SUB_LENGTH = 300
 SHOW_GOOGLE_ADSENSE = False
 # bootstrap颜色样式
@@ -218,12 +223,13 @@ EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'yyxfans@163.com'
 EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PASSWORD')
-DEFAULT_FROM_EMAIL = 'xmyangz@qq.com'
 SERVER_EMAIL = 'xmyangz@qq.com'
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
 # 设置debug=false 未处理异常邮件通知
 ADMINS = [('xmyangz', 'xmyangz@qq.com')]
 # 微信管理员密码(两次md5获得)
 WXADMIN = 'a0455106316af45a76f2cf037522780d'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -351,4 +357,5 @@ OAHUTH = {
 }
 
 SITE_ID = 1
-BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=http://blog.easysoft.club&token=bda8aKdHp58MYeOk&type=original"
+BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=http://blog.easysoft.club&token=bda8aKdHp58MYeOk"
+

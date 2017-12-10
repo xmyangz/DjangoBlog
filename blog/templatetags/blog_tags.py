@@ -137,9 +137,7 @@ def load_sidebar(user):
     if tags and len(tags) > 0:
         s = list(map(lambda t: (t, t.get_article_count()), tags))
         count = sum(map(lambda t: t[1], s))
-        dd = count / len(tags)
-        if dd == 0:
-            dd = 1
+        dd = 1 if count == 0 else count / len(tags)
         sidebar_tags = list(map(lambda x: (x[0], x[1], (x[1] / dd) * increment + 10), s))
 
     return {
