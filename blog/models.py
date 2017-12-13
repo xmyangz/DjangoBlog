@@ -108,7 +108,7 @@ class Article(BaseModel):
 
     def get_admin_url(self):
         info = (self._meta.app_label, self._meta.model_name)
-        return urlresolvers.reverse('xadmin:%s_%s_change' % info, args=(self.pk,))
+        return reverse('xadmin:%s_%s_change' % info, args=(self.pk,))
 
     @cached_property
     def next_article(self):
