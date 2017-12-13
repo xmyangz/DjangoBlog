@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     # 第三方应用程序 
     'bootstrap3',
+    'xadmin',
+    'crispy_forms',
+    'reversion',
 
     'pagedown',
     'haystack',

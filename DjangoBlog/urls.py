@@ -14,13 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
+#from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from DjangoBlog.sitemap import StaticViewSitemap, ArticleSiteMap, CategorySiteMap, TagSiteMap, UserSiteMap
 from DjangoBlog.feeds import DjangoBlogFeed
 from django.views.decorators.cache import cache_page
 from django.conf import settings
 from django.conf.urls.static import static
+import xadmin
+xadmin.autodiscover()
+
+# version模块自动注册需要版本控制的 Model
+from xadmin.plugins import xversion
+xversion.register_models()
 
 sitemaps = {
 
@@ -35,7 +41,8 @@ handler404 = 'blog.views.page_not_found_view'
 handler500 = 'blog.views.server_error_view'
 
 urlpatterns = [
-                  url(r'^admin/', admin.site.urls),
+                  #url(r'^admin/', admin.site.urls),
+                  url(r'xadmin/', include(xadmin.site.urls)),
                   url(r'', include('blog.urls', namespace='blog', app_name='blog')),
 
                   url(r'', include('comments.urls', namespace='comment', app_name='comments')),

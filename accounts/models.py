@@ -8,7 +8,7 @@ from django.contrib.sites.models import Site
 
 class BlogUser(AbstractUser):
     nickname = models.CharField('昵称', max_length=50, blank=True)
-    mugshot = models.ImageField('头像', upload_to='upload/mugshots', blank=True)
+    mugshot = models.ImageField('头像', upload_to='media/uploads/blog/mugshots', blank=True)
 
     # objects = BlogUserManager()
 
