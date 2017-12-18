@@ -9,7 +9,7 @@ from django.utils.functional import cached_property
 
 
 class BaseModel(models.Model):
-    slug = models.SlugField(default='no-slug', max_length=60, blank=True)
+    slug = models.SlugField(default='no-slug', max_length=200, blank=True)
 
     def save(self, *args, **kwargs):
         from DjangoBlog.blog_signals import article_save_signal
@@ -56,7 +56,7 @@ class Article(BaseModel):
     views = models.PositiveIntegerField('浏览量', default=0)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者', on_delete=models.CASCADE)
 
-    category = models.ForeignKey('Category', verbose_name='分类', on_delete=models.CASCADE, blank=True, null=True)
+    category = models.ForeignKey('Category', verbose_name='分类', on_delete=models.CASCADE)
     tags = models.ManyToManyField('Tag', verbose_name='标签集合', blank=True)
 
     def __str__(self):
