@@ -40,4 +40,3 @@ django-bootstrap3==9.1.0
 gunicorn==19.7.1
 static3==0.7.0
 psycopg2>=2.6.1
-xadmin>=0.6.1
