@@ -45,4 +45,5 @@ django-reversion>=2.0.12
 django-formtools>=2.1
 xlwt>=1.2.0
 xlsxwriter>=1.0.2
-xadmin>=0.6.1
+#xadmin>=0.6.1
+git+git://github.com/sshwsfc/xadmin.git
