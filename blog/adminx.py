@@ -2,7 +2,7 @@
 from django.contrib.sites.models import Site
 
 # Register your models here.
-from .models import Article, Category, Tag, Links
+from .models import Article, Category, Tag, Links, SideBar
 from pagedown.widgets import AdminPagedownWidget
 from django import forms
 from django.contrib.auth import get_user_model
@@ -45,7 +45,7 @@ class ArticlelAdmin(object):
     #list_filter = (ArticleListFilter, 'status', 'type', 'category', 'tags')
     list_filter = ('author', 'status', 'type', 'category', 'tags')
     filter_horizontal = ('tags',)
-    exclude = ('slug', 'created_time')
+    exclude = ('slug', 'created_time', 'last_mod_time')
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(ArticlelAdmin, self).get_form(request, obj, **kwargs)
@@ -59,17 +59,25 @@ class ArticlelAdmin(object):
 
 
 class TagAdmin(object):
-    exclude = ('slug',)
+    exclude = ('slug', 'last_mod_time', 'created_time')
 
 
 class CategoryAdmin(object):
-    exclude = ('slug',)
+    exclude = ('slug', 'last_mod_time', 'created_time')
+
+class LinksAdmin(object):
+    exclude = ('last_mod_time', 'created_time')
+
+class SideBarAdmin(object):
+    list_display = ('name', 'content', 'is_enable', 'sequence')
+    exclude = ('last_mod_time', 'created_time')
 
 
 xadmin.site.register(Article, ArticlelAdmin)
 xadmin.site.register(Category, CategoryAdmin)
 xadmin.site.register(Tag, TagAdmin)
-xadmin.site.register(Links)
+xadmin.site.register(Links, LinksAdmin)
+xadmin.site.register(SideBar, SideBarAdmin)
 xadmin.site.register(Site)
 
 class BaseSetting(object):
