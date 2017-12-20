@@ -77,7 +77,7 @@ xadmin.site.register(Article, ArticlelAdmin)
 xadmin.site.register(Category, CategoryAdmin)
 xadmin.site.register(Tag, TagAdmin)
 xadmin.site.register(Links, LinksAdmin)
-xadmin.site.register(SideBar, SideBarAdmin)
+#xadmin.site.register(SideBar, SideBarAdmin)
 xadmin.site.register(Site)
 
 class BaseSetting(object):
