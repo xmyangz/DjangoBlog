@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Article, Category, Tag, Links
+from .models import Article, Category, Tag, Links, SideBar
 from pagedown.widgets import AdminPagedownWidget
 from django import forms
 from django.contrib.auth import get_user_model
@@ -39,7 +39,7 @@ class ArticlelAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     list_filter = (ArticleListFilter, 'status', 'type', 'category', 'tags')
     filter_horizontal = ('tags',)
-    exclude = ('slug', 'created_time')
+    exclude = ('slug', 'created_time', 'last_mod_time')
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(ArticlelAdmin, self).get_form(request, obj, **kwargs)
@@ -53,15 +53,24 @@ class ArticlelAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    exclude = ('slug',)
+    exclude = ('slug', 'last_mod_time', 'created_time')
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('slug',)
+    exclude = ('slug', 'last_mod_time', 'created_time')
+
+
+class LinksAdmin(admin.ModelAdmin):
+    exclude = ('last_mod_time', 'created_time')
+
+
+class SideBarAdmin(admin.ModelAdmin):
+    list_display = ('name', 'content', 'is_enable', 'sequence')
+    exclude = ('last_mod_time', 'created_time')
 
 
 admin.site.register(Article, ArticlelAdmin)
-# admin.site.register(BlogPage, ArticlelAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
-admin.site.register(Links)
+admin.site.register(Links, LinksAdmin)
+admin.site.register(SideBar, SideBarAdmin)
