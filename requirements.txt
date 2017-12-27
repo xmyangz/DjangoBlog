@@ -47,5 +47,5 @@ xlwt>=1.2.0
 xlsxwriter>=1.0.2
 #xadmin>=0.6.1
 git+git://github.com/sshwsfc/xadmin.git
-
+markdown>=2.6.10
 #django-markdownx>=2.0.21
