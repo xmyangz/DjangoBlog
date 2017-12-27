@@ -9,7 +9,7 @@ from django.utils.timezone import now
 
 class BlogUser(AbstractUser):
     nickname = models.CharField('昵称', max_length=50, blank=True)
-    mugshot = models.ImageField('头像', upload_to='media/uploads/blog/mugshots', blank=True)
+    mugshot = models.ImageField('头像', upload_to='static/media/uploads/blog/mugshots', blank=True)
     created_time = models.DateTimeField('创建时间', default=now)
     last_mod_time = models.DateTimeField('修改时间', default=now)
 

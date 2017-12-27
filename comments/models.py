@@ -3,12 +3,13 @@ from django.conf import settings
 from blog.models import Article
 from DjangoBlog.utils import logger
 from django.utils.timezone import now
-
+from markdownx.models import MarkdownxField
 
 # Create your models here.
 
 class Comment(models.Model):
     body = models.TextField('正文', max_length=300)
+    #body = MarkdownxField('正文', max_length=300)
     created_time = models.DateTimeField('创建时间', default=now)
     last_mod_time = models.DateTimeField('修改时间', default=now)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者', on_delete=models.CASCADE)

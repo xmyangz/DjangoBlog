@@ -7,7 +7,7 @@ from django.contrib.sites.models import Site
 from DjangoBlog.utils import cache_decorator, logger, cache
 from django.utils.functional import cached_property
 from django.utils.timezone import now
-
+from markdownx.models import MarkdownxField
 
 class BaseModel(models.Model):
     slug = models.SlugField(default='no-slug', max_length=200, blank=True)
@@ -50,6 +50,7 @@ class Article(BaseModel):
     )
     title = models.CharField('标题', max_length=200, unique=True)
     body = models.TextField('正文')
+    #body = MarkdownxField('正文')
     pub_time = models.DateTimeField('发布时间', blank=True, null=True)
     status = models.CharField('文章状态', max_length=1, choices=STATUS_CHOICES, default='p')
     comment_status = models.CharField('评论状态', max_length=1, choices=COMMENT_STATUS, default='o')

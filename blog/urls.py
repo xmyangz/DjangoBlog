@@ -52,3 +52,4 @@ urlpatterns = [
           
     #url(r'^favicon.ico$',RedirectView.as_view(url=r'static/favicon.ico')),
 ]
+

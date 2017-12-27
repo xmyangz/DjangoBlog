@@ -212,17 +212,17 @@ def fileupload(request):
         response = []
         for filename in request.FILES:
             timestr = datetime.datetime.now().strftime('%Y/%m/%d')
-            imgextensions = ['jpg', 'png', 'jpeg', 'bmp']
+            imgextensions = ['jpg', 'png', 'jpeg', 'bmp', 'svg', 'gif', 'tif']
             fname = u''.join(str(filename))
 
             isimage = len([i for i in imgextensions if fname.find(i) >= 0]) > 0
 
-            basepath = r'/var/www/resource/{type}/{timestr}'.format(
-                type='files' if not isimage else'image', timestr=timestr)
+            basepath = settings.BASE_DIR + r'/media/uploads/blog/{type}/{timestr}'.format(
+                type='files' if not isimage else'images', timestr=timestr)
             if settings.TESTING:
-                basepath = settings.BASE_DIR + '/uploads'
-            url = 'https://resource.lylinux.net/{type}/{timestr}/{filename}'.format(
-                type='files' if not isimage else'image', timestr=timestr, filename=filename)
+                basepath = settings.BASE_DIR + '/media'
+            url = settings.SITE_URL + '/{type}/{timestr}/{filename}'.format(
+                type='files' if not isimage else'images', timestr=timestr, filename=filename)
             if not os.path.exists(basepath):
                 os.makedirs(basepath)
             savepath = os.path.join(basepath, filename)

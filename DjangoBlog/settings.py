@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reversion',
 
-    'pagedown',
+    #'pagedown',
+    'markdownx',
     'haystack',
     'blog',
     'accounts',
@@ -83,6 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'blog.context_processors.seo_processor'
             ],
         },
@@ -152,6 +154,7 @@ USE_TZ = True
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '../'))
 
+
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'DjangoBlog.whoosh_cn_backend.WhooshEngine',
@@ -164,9 +167,22 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 AUTHENTICATION_BACKENDS = ['accounts.user_login_backend.EmailOrUsernameModelBackend']
 
 STATIC_ROOT = os.path.join(SITE_ROOT, 'collectedstatic')
-
 STATIC_URL = '/static/'
 STATICFILES = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'static/media')
+MEDIA_URL = '/static//media/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(SITE_ROOT, 'static/media'),
+)
+
+#MarkdownX 设置
+MARKDOWNX_UPLOAD_CONTENT_TYPES = 'image/jpeg', 'image/png', 'image/svg+xml', 'image/gif'
+MARKDOWNX_MEDIA_PATH = 'uploads/blog/images'
+MARKDOWNX_UPLOAD_MAX_SIZE = 5 * 1024 * 1024
+#MARKDOWNX_IMAGE_MAX_SIZE = _mdx('IMAGE_MAX_SIZE', dict(size=(IM_WIDTH, IM_HEIGHT), quality=NINETY_DPI))
+#MARKDOWNX_SVG_JAVASCRIPT_PROTECTION = True
 
 AUTH_USER_MODEL = 'accounts.BlogUser'
 LOGIN_URL = '/login/'
@@ -331,8 +347,9 @@ elif sys.platform == 'linux': #京东云服务器
     SITE_URL = 'http://116.196.102.151' #'https://blog.easysoft.club'
     DEBUG = False
 elif sys.platform == 'darwin': #mac本机
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
     DEBUG = True
+    DEBUG_PROPAGATE_EXCEPTIONS = True
     SITE_URL = 'http://localhost'    
 
 

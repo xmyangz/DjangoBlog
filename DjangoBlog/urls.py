@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+import os
 from django.conf.urls import url, include
 #from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
@@ -21,6 +22,8 @@ from DjangoBlog.feeds import DjangoBlogFeed
 from django.views.decorators.cache import cache_page
 from django.conf import settings
 from django.conf.urls.static import static
+#from django.views.static import serve
+from markdownx import urls as markdownx
 import xadmin
 xadmin.autodiscover()
 
@@ -42,6 +45,7 @@ handler500 = 'blog.views.server_error_view'
 
 urlpatterns = [
                   #url(r'^admin/', admin.site.urls),
+                  url(r'^markdownx/', include(markdownx)),
                   url(r'xadmin/', include(xadmin.site.urls)),
                   url(r'', include('blog.urls', namespace='blog', app_name='blog')),
 
@@ -52,6 +56,11 @@ urlpatterns = [
                       name='django.contrib.sitemaps.views.sitemap'),
                   url(r'^feed/$', DjangoBlogFeed()),
                   url(r'^search', include('haystack.urls'), name='search'),
+                  #url(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
                   url(r'', include('servermanager.urls', namespace='servermanager', app_name='servermanagers')),
 
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+              ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
