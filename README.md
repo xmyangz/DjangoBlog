@@ -1,9 +1,14 @@
 # DjangoBlog
 
-基于`python3.5`和`Django1.10`的博客。   
+基于`python3.6.3`和`Django1.11`的博客。       
 
-[![Build Status](https://travis-ci.org/liangliangyy/DjangoBlog.svg?branch=master)](https://travis-ci.org/liangliangyy/DjangoBlog) [![Coverage Status](https://coveralls.io/repos/github/liangliangyy/DjangoBlog/badge.svg?branch=master)](https://coveralls.io/github/liangliangyy/DjangoBlog?branch=master) [![Requirements Status](https://requires.io/github/liangliangyy/DjangoBlog/requirements.svg?branch=master)](https://requires.io/github/liangliangyy/DjangoBlog/requirements/?branch=master)  [![license](https://img.shields.io/github/license/liangliangyy/djangoblog.svg)]() [![GitHub release](https://img.shields.io/github/release/liangliangyy/djangoblog.svg)]() [![python3.5](https://img.shields.io/badge/python-3.5-brightgreen.svg)]() [![django1.10](https://img.shields.io/badge/django-1.10-brightgreen.svg)]()     
+forked from https://github.com/liangliangyy/DjangoBlog
 
+感谢liangliangyy分享的代码，在他的代码基础上，我只做了以下定制：
+- 集成了 xadmin，替换 Django 简陋的管理页面；
+- 集成了 MarkdownX，替换 pagedown，支持拖拽上传图片到服务器/static/media/uploads/blog/images目录下；
+- 删除 Google 相关代码，防止在国内页面打不开；
+- 增加 Heroku 部署相关的设定。
 ## 主要功能：
 - 文章，页面，分类目录，标签的添加，删除，编辑等。文章及页面支持`Markdown`，支持代码高亮。
 - 支持文章全文搜索。
@@ -53,12 +58,12 @@ windows电脑：
 
      DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'djangoblog',
-            'USER': 'root',
+            'USER': 'postgres',
             'PASSWORD': 'password',
-            'HOST': 'host',
-            'PORT': 3306,
+            'HOST': 'localhost',
+            'PORT': 5432,
         }
     }
 
@@ -92,17 +97,5 @@ windows电脑：
 
  浏览器打开: http://127.0.0.1:8000/  就可以看到效果了。
 
- ## 问题相关
 
- 有任何问题欢迎提Issue,或者将问题描述发送至我邮箱 `liangliangyy#gmail.com`.我会尽快解答.推荐提交Issue方式.
-## 捐赠
-如果您觉得本项目对您有所帮助，欢迎您请我喝杯咖啡，您的支持是我最大的动力，您可以扫描下方二维码为我付款，谢谢。
-### 支付宝：
-<div  align="center">
-<img src="https://resource.lylinux.net/image/2017/12/16/IMG_0207.jpg" width="300" height="300" />
-</div>
 
-### 微信：
-<div  align="center">
-<img src="https://resource.lylinux.net/image/2017/12/16/IMG_0206.jpg" width="300" height="300" />
-</div>

@@ -357,7 +357,7 @@ OAHUTH = {
     'sina': {
         'appkey': os.environ.get('SINA_APP_KEY'),
         'appsecret': os.environ.get('SINA_APP_SECRET'),
-        'callbackurl': SITE_URL+'/oauth/authorize?type=weibo'
+        'callbackurl': SITE_URL+'/oauth/oauthlogin?type=weibo&next_url=/login/'
     },
     'google': {
         'appkey': os.environ.get('GOOGLE_APP_KEY'),
