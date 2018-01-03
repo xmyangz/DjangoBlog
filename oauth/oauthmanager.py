@@ -82,7 +82,7 @@ class WBOauthManager(BaseOauthManager):
             'client_id': self.client_id,
             'response_type': 'code',
             #'redirect_uri': self.callback_url + '&next_url=' + nexturl
-            'redirect_uri': 'http://blog.easysoft.club'
+            'redirect_uri': self.callback_url
         }
         url = self.AUTH_URL + "?" + urllib.parse.urlencode(params)
         return url
