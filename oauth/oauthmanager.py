@@ -82,6 +82,7 @@ class WBOauthManager(BaseOauthManager):
             'client_id': self.client_id,
             'response_type': 'code',
             #'redirect_uri': self.callback_url + '&next_url=' + nexturl
+            # Modified by xmyangz
             'redirect_uri': self.callback_url
         }
         url = self.AUTH_URL + "?" + urllib.parse.urlencode(params)
