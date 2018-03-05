@@ -338,8 +338,8 @@ if os.getcwd() == '/app': # Heroku设置
 
     # 只允许Heroku托管这个项目
     #ALLOWED_HOSTS = ['yangz.herokuapp.com']
-    ALLOWED_HOSTS = ['blog.easysoft.club', 'yangz.herokuapp.com']
-    SITE_URL = 'http://blog.easysoft.club'
+    ALLOWED_HOSTS = ['blog.odoosoft.club', 'yangz.herokuapp.com']
+    SITE_URL = 'http://blog.odoosoft.club'
     DEBUG = False
 elif sys.platform == 'linux': #京东云服务器
     #ALLOWED_HOSTS = ['blog.easysoft.club']
@@ -357,7 +357,7 @@ OAHUTH = {
     'sina': {
         'appkey': os.environ.get('SINA_APP_KEY'),
         'appsecret': os.environ.get('SINA_APP_SECRET'),
-        'callbackurl': 'http://blog.easysoft.club/oauth/authorize?type=weibo'
+        'callbackurl': 'http://blog.odoosoft.club/oauth/authorize?type=weibo'
     },
     'google': {
         'appkey': os.environ.get('GOOGLE_APP_KEY'),
@@ -377,5 +377,5 @@ OAHUTH = {
 }
 
 SITE_ID = 1
-BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=http://blog.easysoft.club&token=bda8aKdHp58MYeOk"
+BAIDU_NOTIFY_URL = "http://data.zz.baidu.com/urls?site=http://blog.odoosoft.club&token=bda8aKdHp58MYeOk"
 
