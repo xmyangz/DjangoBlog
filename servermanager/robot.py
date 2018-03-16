@@ -56,7 +56,7 @@ def convert_to_articlereply(articles, message):
             title=post.title,
             description=truncatechars_content(post.body),
             img=imgurl,
-            url=post.get_full_url()
+            url=post.get_full_url().replace('https\:','http\:')
         )
         reply.add_article(article)
     return reply
