@@ -27,7 +27,7 @@ class BaseModel(models.Model):
 
     def get_full_url(self):
         site = Site.objects.get_current().domain
-        url = "https://{site}{path}".format(site=site, path=self.get_absolute_url())
+        url = "http://{site}{path}".format(site=site, path=self.get_absolute_url())
         return url
 
     class Meta:
