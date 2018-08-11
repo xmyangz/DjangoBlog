@@ -31,7 +31,6 @@
               media='all'/>
         <link href="{% static 'blog/css/oauth_style.css' %}" rel="stylesheet">
         {% comment %}<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>{% endcomment %}
-        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <!--[if lt IE 9]>
         <link rel='stylesheet' id='twentytwelve-ie-css'  href='{% static 'blog/css/ie.css' %}' type='text/css' media='all' />
         <![endif]-->
@@ -40,6 +39,8 @@
         {% block compress_css %}
         {% endblock %}
     {% endcompress %}
+    
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 
 <body class="home blog custom-font-enabled">
